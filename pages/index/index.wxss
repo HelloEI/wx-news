@@ -64,3 +64,74 @@
     height: 120rpx;
     width: 180rpx
 }
+
+.swiper-wrapper {
+  margin-top: 0rpx;
+  height: 400rpx;
+}
+
+.slide-image {
+  width: 750rpx;
+  height: 400rpx;
+  z-index: -1;
+}
+
+.swiper-item {
+  position: relative;
+}
+
+.swiper-tag {
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  padding: 4rpx 24rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+  background-color: rgba(244, 67, 54, 0.7);
+  border-bottom-left-radius: 20rpx;
+}
+
+.swiper-title {
+  position: absolute;
+  bottom: 40rpx;
+  background-color: rgba(117, 117, 117, 0.7);
+  color: #ffffff;
+  padding: 16rpx 16rpx 0rpx 16rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  width: 750rpx;
+  word-wrap: break-all;
+}
+
+.swiper-subtitle {
+  position: absolute;
+  background-color: rgba(117, 117, 117, 0.7);
+  color: rgb(224, 224, 224);
+  height: 40rpx;
+  width: 750rpx;
+  font-size: 20rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.news-type-button {
+  background-color: transparent;
+  padding: 0rpx;
+  margin-left: 0rpx;
+  margin-top: -7rpx;
+}
+
+/* 去除button边框 */
+.news-type-button::after{
+  border:none;
+}
+
+.swiper-source {
+  padding-left: 16rpx;
+}
+
+.swiper-date {
+  padding-right: 16rpx;
+}

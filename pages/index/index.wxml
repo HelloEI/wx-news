@@ -6,6 +6,18 @@
         </view>
     </view>
 </view>
+<swiper indicator-dots="true" indicator-color="#B3E5FC" indicator-active-color="#0288D1" circular="true" autoplay="true" interval="5000" duration="500" class='swiper-wrapper'>
+  <view wx:for="{{swiperImgUrlList}}" wx:key="item.id">
+    <swiper-item class='swiper-item' data-newsId="{{item.id}}"    bindtap='onTapNews'>
+      <image src="{{!!item.firstImage?item.firstImage: '/images/011-bar.png'}}" class="slide-image" />
+      <view class='swiper-title'>{{!!item.title?item.title: '优达|未知标题'}}</view>
+      <view class='swiper-subtitle'>
+        <view class='swiper-source'>{{!!item.source?item.source: '未知来源'}}</view>
+        <view class='swiper-date'>{{!!item.date?item.date: '未知发布时间'}}</view>
+      </view>
+    </swiper-item>
+  </view>
+</swiper>
 <scroll-view scroll-y="true">
     <view class="news-list">
         <view class="news-item" wx:key="unique" wx:for="{{newsList}}">

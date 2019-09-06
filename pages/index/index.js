@@ -24,8 +24,8 @@ Page({
         //     date: '2018-04-06T11:28:25.000Z',
         //     firstImage: 'http://inews.gtimg.com/newsapp_bt/0/3199649303/641'
         // }]
-        userNewsTypeMap: [],
-        userNewsType: [],
+        //userNewsTypeMap: [],
+        //userNewsType: [],
         swiperImgUrlList: [],
         //category: 'gn', // str 当前类别
         //selectedNewsType: '',
