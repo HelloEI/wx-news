@@ -1,5 +1,5 @@
 //index.js
-
+const app = getApp()
 const categoryMap = {
     'gn': '国内',
     'gj': '国际',
@@ -24,7 +24,12 @@ Page({
         //     date: '2018-04-06T11:28:25.000Z',
         //     firstImage: 'http://inews.gtimg.com/newsapp_bt/0/3199649303/641'
         // }]
-        category: 'gn', // str 当前类别
+        userNewsTypeMap: [],
+        userNewsType: [],
+        swiperImgUrlList: [],
+        //category: 'gn', // str 当前类别
+        //selectedNewsType: '',
+        selectedCategory: 'gn', // str 当前类别
         categoryList: [
             { 'en': 'gn', 'cn': '国内' }
         ], // dict 类别字典
@@ -55,11 +60,18 @@ Page({
         wx.request({
             url: 'https://test-miniprogram.com/api/news/list',
             data: {
-                type: this.data.category
+              type: this.data.selectedCategory
+            },
+          header: {
+            'content-type': 'application/json' // 默认值
             },
             success: res => {
-                let result = res.data.result
-                this.setNewsList(result)
+              console.info(res); //print
+              let newsContent = res.data.result;
+              // 随机排序，模拟获取到的新闻列表发生变化，测试pulldownrefresh
+              newsContent.sort(this.randomsort)
+              // 提取获得的数据的前三项作为swiper的数据，不满3项取全部
+              this.setNewsList(newsContent)
             },
             fail: res => {
                 console.log(res)
@@ -67,34 +79,45 @@ Page({
             complete: () => {
                 callback && callback()
             }
-
         })
     },
 
-    // 更新新闻概要列表
-    setNewsList(result) {
-        let newsList = []
+/**
+* 排序辅助函数，用于打乱新闻列表，模拟获取新新闻列表
+*/
+     randomsort: (a, b) => {
+     //用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1
+     return Math.random() > .5 ? -1 : 1;
+     },
 
-        for (let i = 0; i < result.length; i += 1) {
-            newsList.push({
-                id: result[i].id, 
-                title: result[i].title.slice(0,30), //处理过长的标题
-                time: moment(result[i].date).fromNow(),
-                source: result[i].source || '', //值不存在的情况
-                firstImage: result[i].firstImage || "/images/news-img.png", //值不存在的情况
+    // 更新新闻概要列表
+  setNewsList(newsContent) {
+    let newsList = []
+    newsContent.forEach(d => {
+      let newsDate = new Date(d.date);
+      d.date = `${newsDate.getFullYear()}-${newsDate.getMonth() + 1}-${newsDate.getDate()}`
+    })
+    for (let i = 0; i < newsContent.length; i += 1) {
+      newsList.push({
+        id: newsContent[i].id, 
+        title: newsContent[i].title.slice(0,30), //处理过长的标题
+        //time: moment(newsContent[i].date).fromNow(),
+        time: newsContent[i].date,
+        source: newsContent[i].source || '', //值不存在的情况
+        firstImage: newsContent[i].firstImage || "/images/news-img.png", //值不存在的情况
             })
         }
         this.setData({
-            newsList: newsList
+          swiperImgUrlList: newsContent.length >= 3 ? newsContent.slice(0, 3) : newsContent,
+          newsList: newsList
         })
     },
 
     // 变更当前栏目
     onTapCategory(event) {
-        this.setData({
-            category: event.currentTarget.dataset.category
-
-        })
+      this.setData({
+        selectedCategory: event.currentTarget.dataset.category
+      });
         this.getNews()
     },
 
@@ -115,6 +138,5 @@ Page({
             wx.stopPullDownRefresh()
         })
     },
-
 
 })
