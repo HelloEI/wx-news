@@ -1,26 +1,17 @@
 // pages/detail/detail.js
 
-
-// 使用moment库转换时间
-var moment = require('../../libs/moment-cn.min.js');
-moment.locale('zh-cn');
-
 Page({
   data: {
     newsID: '',
     articleInfo: {}
   },
-
   // 首次加载
   onLoad(opt) {
     this.setData({
       newsID: opt.id
     })
-
     this.getArticle()
-
   },
-
   // 获取新闻详情
   getArticle(callback) {
     wx.request({
@@ -31,12 +22,11 @@ Page({
       success: res => {
         // 设定文本概要信息
         let articleInfo = res.data.result
-        articleInfo.time = moment(articleInfo.date).format('YYYY-MM-DD hh:mm')
-
+        let date = new Date(articleInfo.date)
+        articleInfo.time = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
         this.setData({
           articleInfo: articleInfo,
         })
-
         // 设定正文富文本
         let nodes = this.convertArticleNodes(res.data.result.content)
         this.setData({
@@ -51,8 +41,6 @@ Page({
       }
     }) // end request
   },
-
-
   // 渲染新闻富文本
   convertArticleNodes(content) {
     let nodes = []
@@ -82,15 +70,11 @@ Page({
     } // end for
     return nodes;
   },
-
-
   // 下拉刷新
   onPullDownRefresh() {
     console.log("refresh executed!")
-
     this.getArticle(() => {
       wx.stopPullDownRefresh()
     })
   },
-
 })

@@ -1,7 +1,7 @@
 <!-- index.wxml -->
 <view class="category-wrapper">
     <view class="category-item" wx:key="unique" wx:for="{{categoryList}}">
-        <view class="category-tab {{category==item.en?'active':''}}" bindtap="onTapCategory" data-category="{{item.en}}">
+        <view class="category-tab {{selectedCategory==item.en?'active':''}}" bindtap="onTapCategory" data-category="{{item.en}}">
             {{item.cn}}
         </view>
     </view>
@@ -9,7 +9,7 @@
 <swiper indicator-dots="true" indicator-color="#B3E5FC" indicator-active-color="#0288D1" circular="true" autoplay="true" interval="5000" duration="500" class='swiper-wrapper'>
   <view wx:for="{{swiperImgUrlList}}" wx:key="item.id">
     <swiper-item class='swiper-item' data-newsId="{{item.id}}"    bindtap='onTapNews'>
-      <image src="{{!!item.firstImage?item.firstImage: '/images/011-bar.png'}}" class="slide-image" />
+      <image src="{{!!item.firstImage?item.firstImage: '/images/006-apple.png'}}" class="slide-image" />
       <view class='swiper-title'>{{!!item.title?item.title: '优达|未知标题'}}</view>
       <view class='swiper-subtitle'>
         <view class='swiper-source'>{{!!item.source?item.source: '未知来源'}}</view>

@@ -10,10 +10,6 @@ const categoryMap = {
     'other': '其他',
 }
 
-// 使用moment库转换时间
-var moment = require('../../libs/moment-cn.min.js'); // 精简压缩moment库, 压缩80%体积
-moment.locale('zh-cn');
-
 Page({
     data: {
         newsList: [], // list 新闻列表
@@ -24,8 +20,6 @@ Page({
         //     date: '2018-04-06T11:28:25.000Z',
         //     firstImage: 'http://inews.gtimg.com/newsapp_bt/0/3199649303/641'
         // }]
-        //userNewsTypeMap: [],
-        //userNewsType: [],
         swiperImgUrlList: [],
         //category: 'gn', // str 当前类别
         //selectedNewsType: '',
@@ -66,7 +60,7 @@ Page({
             'content-type': 'application/json' // 默认值
             },
             success: res => {
-              console.info(res); //print
+              //console.info(res); //print
               let newsContent = res.data.result;
               // 随机排序，模拟获取到的新闻列表发生变化，测试pulldownrefresh
               newsContent.sort(this.randomsort)
@@ -81,15 +75,13 @@ Page({
             }
         })
     },
-
 /**
 * 排序辅助函数，用于打乱新闻列表，模拟获取新新闻列表
 */
-     randomsort: (a, b) => {
+  randomsort: (a, b) => {
      //用Math.random()函数生成0~1之间的随机数与0.5比较，返回-1或1
      return Math.random() > .5 ? -1 : 1;
      },
-
     // 更新新闻概要列表
   setNewsList(newsContent) {
     let newsList = []
@@ -112,7 +104,6 @@ Page({
           newsList: newsList
         })
     },
-
     // 变更当前栏目
     onTapCategory(event) {
       this.setData({
@@ -120,7 +111,6 @@ Page({
       });
         this.getNews()
     },
-
     // 跳转到详情页面
     onTapNews(event) {
         let newsID = event.currentTarget.dataset.newsid
@@ -128,8 +118,6 @@ Page({
             url: '/pages/detail/detail?id=' + newsID
         })
     },
-
-
     // 下拉刷新
     onPullDownRefresh() {
         console.log("refresh executed!")
@@ -138,5 +126,4 @@ Page({
             wx.stopPullDownRefresh()
         })
     },
-
 })
