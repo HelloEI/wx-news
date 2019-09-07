@@ -48,7 +48,7 @@ Page({
             categoryList: categoryList
         })
     },
-
+//<div>Icons in the "images" folder made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
     // 获取新闻列表
     getNews(callback) {
         wx.request({
