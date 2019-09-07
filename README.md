@@ -4,10 +4,10 @@
 
 微信小程序入门项目，使用了Udacity的虚拟[新闻API](https://github.com/udacity/wmpnd-news/blob/master/news_api.md)
 
-## 界面
-![界面截图](/screenshot/page1.png)
-![界面截图](/screenshot/page2.png)
-![界面截图](/screenshot/page3.png)
+## 界面截图
+![some](./screenshot/page1.PNG)
+![some](./screenshot/page2.PNG)
+![some](./screenshot/page3.PNG)
 
 ## 已实现：
 - [x] 新闻列表、分类图文显示、详情页等基础功能。
