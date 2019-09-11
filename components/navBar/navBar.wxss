@@ -1,0 +1,53 @@
+.nav {
+width: 100%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 999;
+}
+
+.navbar {
+display: flex;
+align-items: center;
+position: relative;
+}
+
+.capsule {
+margin-left: 10px;
+height: 30px;
+background: rgba(255, 255, 255, 0.6);
+border-radius: 16px;
+display: flex;
+align-items: center;
+}
+
+.capsule > view {
+width: 45px;
+height: 60%;
+}
+
+.capsule > view:nth-child(2) {
+border-left: 1px solid #fff;
+}
+
+.capsule image {
+display: block;
+width: 50%;
+height: 100%;
+margin: auto;
+}
+
+.nav-title {
+position: absolute;
+left: 60px;
+right: 104px;
+top: 50%;
+transform: translateY(-50%);
+max-height: 30px;
+text-align: left;
+font-size: 14px;
+font-weight: bold;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}

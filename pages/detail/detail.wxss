@@ -4,7 +4,7 @@
     width: 680rpx;
     margin-left: 30rpx;
     margin-right: 30rpx;
-    margin-top: 10rpx;
+    margin-top: 190rpx;
 }
 
 .info-wrapper{

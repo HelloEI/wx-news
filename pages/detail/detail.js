@@ -1,4 +1,8 @@
 // pages/detail/detail.js
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
 
 Page({
   data: {
@@ -23,7 +27,8 @@ Page({
         // 设定文本概要信息
         let articleInfo = res.data.result
         let date = new Date(articleInfo.date)
-        articleInfo.time = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+        //articleInfo.time = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+        articleInfo.time = [date.getHours(), date.getMinutes()].map(formatNumber).join(':')
         this.setData({
           articleInfo: articleInfo,
         })
@@ -69,12 +74,5 @@ Page({
       } // end if
     } // end for
     return nodes;
-  },
-  // 下拉刷新
-  onPullDownRefresh() {
-    console.log("refresh executed!")
-    this.getArticle(() => {
-      wx.stopPullDownRefresh()
-    })
   },
 })

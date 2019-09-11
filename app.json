@@ -6,9 +6,13 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#03A9F4",
-    "navigationBarTitleText": "优达读新闻",
+    "navigationBarTitleText": "快读·资讯",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "navigationStyle": "custom"
+    
   },
+    "usingComponents": {
+      "navBar": "/components/navBar/navBar"
+    },
   "sitemapLocation": "sitemap.json"
 }

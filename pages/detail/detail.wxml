@@ -2,8 +2,10 @@
 <view class="page-detail">
   <view class="title">{{articleInfo.title}}</view>
   <view class="info-wrapper">
+     <view class="source">
+      <text decode="{{true}}">{{articleInfo.source}}&ensp;&ensp;</text>
+    </view>
      <view class="time">{{articleInfo.time}}</view> 
-    <view class="source">{{articleInfo.source}}</view>
     <view class="count">阅读量 {{articleInfo.readCount}}</view>
   </view>
   <view class="article-wrapper">
@@ -12,3 +14,9 @@
     </view>
   </view>
 </view>
+<navBar 
+    title-text="快读·资讯"
+    back-icon="/images/back.png"
+    background="#00BBFF"
+    color="white"
+    bindback="back"/>

@@ -9,6 +9,11 @@ const categoryMap = {
     'ty': '体育',
     'other': '其他',
 }
+//用于转换时间显示
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
 
 Page({
     data: {
@@ -21,21 +26,23 @@ Page({
         //     firstImage: 'http://inews.gtimg.com/newsapp_bt/0/3199649303/641'
         // }]
         swiperImgUrlList: [],
-        //category: 'gn', // str 当前类别
-        //selectedNewsType: '',
-        selectedCategory: 'gn', // str 当前类别
+        selectedCategory: 'gn', // str 当前类别，所选的类别
         categoryList: [
             { 'en': 'gn', 'cn': '国内' }
         ], // dict 类别字典
     },
 
     // 首次加载
+    //onLoad() 生命周期函数--监听页面加载，小程序注册完成后，加载页面，触发onLoad方法。
+    //调用时，设定新闻类别，再获取所选类别的新闻。
     onLoad() {
         this.setCategory()
         this.getNews()
     },
 
     // 设定顶部导航栏
+    // 将categoryMap中的值放进页面data的categoryList中
+    // categoryList中的数据在页面会被显示为导航栏内容，wxml中有显示的设置。
     setCategory() {
         let categoryList = []
         for (var key in categoryMap) {
@@ -48,8 +55,9 @@ Page({
             categoryList: categoryList
         })
     },
-//<div>Icons in the "images" folder made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
+
     // 获取新闻列表
+    // 从新闻源获取新闻，由于用的Udacity提供的新闻源，并已定义好type，将selectedCategory传入，获取到相应栏目的新闻列表。
     getNews(callback) {
         wx.request({
             url: 'https://test-miniprogram.com/api/news/list',
@@ -60,7 +68,6 @@ Page({
             'content-type': 'application/json' // 默认值
             },
             success: res => {
-              //console.info(res); //print
               let newsContent = res.data.result;
               // 随机排序，模拟获取到的新闻列表发生变化，测试pulldownrefresh
               newsContent.sort(this.randomsort)
@@ -86,8 +93,9 @@ Page({
   setNewsList(newsContent) {
     let newsList = []
     newsContent.forEach(d => {
-      let newsDate = new Date(d.date);
-      d.date = `${newsDate.getFullYear()}-${newsDate.getMonth() + 1}-${newsDate.getDate()}`
+      let newsDate = new Date(d.date); //生成符合格式要求的时间信息
+      //d.date = `${newsDate.getFullYear()}-${newsDate.getMonth() + 1}-${newsDate.getDate()}`
+      d.date = [newsDate.getHours(), newsDate.getMinutes()].map(formatNumber).join(':')
     })
     for (let i = 0; i < newsContent.length; i += 1) {
       newsList.push({
@@ -96,7 +104,7 @@ Page({
         //time: moment(newsContent[i].date).fromNow(),
         time: newsContent[i].date,
         source: newsContent[i].source || '', //值不存在的情况
-        firstImage: newsContent[i].firstImage || "/images/news-img.png", //值不存在的情况
+        firstImage: newsContent[i].firstImage || "/images/006-apple.png", //值不存在的情况
             })
         }
         this.setData({
@@ -105,6 +113,7 @@ Page({
         })
     },
     // 变更当前栏目
+    // 点选的栏目赋值给selectedCategory
     onTapCategory(event) {
       this.setData({
         selectedCategory: event.currentTarget.dataset.category
@@ -112,6 +121,8 @@ Page({
         this.getNews()
     },
     // 跳转到详情页面
+    // 点选的新闻通过newsid在详情页面显示相应的新闻。
+    // newsid在wxml中有定义。
     onTapNews(event) {
         let newsID = event.currentTarget.dataset.newsid
         wx.navigateTo({
@@ -119,11 +130,13 @@ Page({
         })
     },
     // 下拉刷新
+    // 在index.json中将enablePullDownRefresh设为true，开启index页面的下拉刷新
+    // 用onPullDownRefresh()函数监听下拉动作，刷到新闻后，wx.stopPullDownRefresh()停止下拉刷新效果
     onPullDownRefresh() {
-        console.log("refresh executed!")
-
+        //console.log("refresh executed!")
         this.getNews(() => {
             wx.stopPullDownRefresh()
         })
     },
 })
+

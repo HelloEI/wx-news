@@ -5,7 +5,7 @@
     background-color: #B0C4DE;
     text-align: center;
     padding-left: 18rpx;
-    top: 0%;
+    top: 10%;
     width: 100%;
     height: 60rpx;
     position: fixed;
@@ -27,6 +27,7 @@
 .category-tab.active{
     color: #ffffff;
     font-weight: 600;
+    border-bottom: 2px #ffffff solid; 
 }
 
 .news-wrapper{
@@ -57,6 +58,10 @@
     bottom: 0rpx;
 }
 
+.news-list{
+    bottom: 0rpx;
+}
+
 .news-wrapper .time{
     margin-right: 30rpx;
     font-size: 28rpx;
@@ -69,7 +74,7 @@
 }
 
 .swiper-wrapper {
-  margin-top: 0rpx;
+  margin-top: 190rpx;
   height: 400rpx;
 }
 
@@ -81,6 +86,7 @@
 
 .swiper-item {
   position: relative;
+  top: 0%;
 }
 
 .swiper-tag {
@@ -96,10 +102,10 @@
 
 .swiper-title {
   position: absolute;
-  bottom: 40rpx;
+  bottom: 45rpx;
   background-color: rgba(117, 117, 117, 0.7);
   color: #ffffff;
-  padding: 16rpx 16rpx 0rpx 16rpx;
+  padding: 20rpx 16rpx 0rpx 16rpx;
   font-size: 30rpx;
   line-height: 42rpx;
   width: 750rpx;
@@ -110,9 +116,9 @@
   position: absolute;
   background-color: rgba(117, 117, 117, 0.7);
   color: rgb(224, 224, 224);
-  height: 40rpx;
+  height: 45rpx;
   width: 750rpx;
-  font-size: 20rpx;
+  font-size: 24rpx;
   bottom: 0rpx;
   left: 0rpx;
   display: flex;
@@ -136,5 +142,5 @@
 }
 
 .swiper-date {
-  padding-right: 16rpx;
+  padding-right: 450rpx;
 }
