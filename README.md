@@ -26,4 +26,4 @@
 ## 图标下载链接
 - Icons in the "images" folder made by 
 - <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a>
-- < a href = "https://www.flaticon.com/authors/gregor-cresnar" title = "Gregor Cresnar" > Gregor Cresnar</a > from < a href = "https://www.flaticon.com/"   title = "Flaticon" > www.flaticon.com</a >
+- <a href = "https://www.flaticon.com/authors/gregor-cresnar" title = "Gregor Cresnar" > Gregor Cresnar</a > from <a href = "https://www.flaticon.com/"   title = "Flaticon" > www.flaticon.com</a>
