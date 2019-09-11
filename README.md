@@ -24,5 +24,5 @@
 - https://github.com/gu-xiaohui/mini-components
 
 ## 图标下载链接
--- <div>Icons in the "images" folder made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
--- < div > Icons made by < a href = "https://www.flaticon.com/authors/gregor-cresnar" title = "Gregor Cresnar" > Gregor Cresnar</a > from < a href = "https://www.flaticon.com/"             title = "Flaticon" > www.flaticon.com</a ></div >
+-- Icons in the "images" folder made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a>
+-- Icons made by < a href = "https://www.flaticon.com/authors/gregor-cresnar" title = "Gregor Cresnar" > Gregor Cresnar</a > from < a href = "https://www.flaticon.com/"             title = "Flaticon" > www.flaticon.com</a >
